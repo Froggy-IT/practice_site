@@ -1,0 +1,1476 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NexaForge | IT Company Portfolio</title>
+  <meta name="description" content="Портфолио IT-компании: услуги, кейсы, команда, технологии, блог и заявка на проект.">
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <style>
+    :root {
+      color-scheme: dark;
+      --ink: #f4f7fb;
+      --muted: #aeb8c8;
+      --line: rgba(255,255,255,.13);
+      --panel: rgba(12, 18, 28, .72);
+      --panel-strong: rgba(18, 26, 38, .9);
+      --nav: rgba(8, 12, 19, .75);
+      --cyan: #42d9ff;
+      --lime: #a6ff6b;
+      --coral: #ff7867;
+      --gold: #ffd166;
+      --violet: #b998ff;
+      --shadow: 0 22px 60px rgba(0,0,0,.35);
+      --radius: 8px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      background:
+        radial-gradient(circle at 18% 12%, rgba(66,217,255,.15), transparent 30%),
+        radial-gradient(circle at 82% 8%, rgba(255,209,102,.12), transparent 28%),
+        linear-gradient(135deg, #070b12 0%, #12141b 46%, #06151a 100%);
+      color: var(--ink);
+      letter-spacing: 0;
+      overflow-x: hidden;
+    }
+
+    body.light {
+      color-scheme: light;
+      --ink: #101723;
+      --muted: #536174;
+      --line: rgba(16,23,35,.13);
+      --panel: rgba(255,255,255,.78);
+      --panel-strong: rgba(255,255,255,.94);
+      --nav: rgba(255,255,255,.78);
+      background:
+        radial-gradient(circle at 18% 12%, rgba(66,217,255,.18), transparent 30%),
+        radial-gradient(circle at 84% 12%, rgba(255,120,103,.16), transparent 26%),
+        linear-gradient(135deg, #f7fbff 0%, #eef4f5 55%, #fff7ef 100%);
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    button, input, textarea, select { font: inherit; }
+    button { cursor: pointer; }
+    .wrap { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
+
+    .topbar {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 50;
+      backdrop-filter: blur(18px);
+      background: var(--nav);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 850;
+      letter-spacing: 0;
+    }
+
+    .mark {
+      width: 38px;
+      height: 38px;
+      border: 1px solid var(--line);
+      display: grid;
+      place-items: center;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, var(--cyan), var(--lime));
+      color: #071017;
+      box-shadow: 0 12px 34px rgba(66,217,255,.22);
+    }
+
+    .navlinks {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .navlinks a, .ghost, .icon-btn, .primary, .secondary {
+      min-height: 40px;
+      border-radius: var(--radius);
+      border: 1px solid transparent;
+      transition: transform .22s ease, border-color .22s ease, background .22s ease, box-shadow .22s ease;
+    }
+
+    .navlinks a {
+      padding: 10px 12px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .navlinks a.active, .navlinks a:hover {
+      color: var(--ink);
+      background: rgba(255,255,255,.08);
+      border-color: var(--line);
+    }
+
+    .actions { display: flex; align-items: center; gap: 10px; }
+    .icon-btn {
+      width: 42px;
+      background: rgba(255,255,255,.07);
+      color: var(--ink);
+      border-color: var(--line);
+      display: grid;
+      place-items: center;
+    }
+
+    .ghost {
+      background: rgba(255,255,255,.07);
+      color: var(--ink);
+      border-color: var(--line);
+      padding: 0 14px;
+    }
+
+    .primary, .secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 0 18px;
+      font-weight: 750;
+      min-width: 132px;
+    }
+
+    .primary {
+      color: #071017;
+      background: linear-gradient(135deg, var(--cyan), var(--lime));
+      box-shadow: 0 18px 42px rgba(66,217,255,.18);
+    }
+
+    .secondary {
+      color: var(--ink);
+      background: rgba(255,255,255,.08);
+      border-color: var(--line);
+    }
+
+    .primary:hover, .secondary:hover, .ghost:hover, .icon-btn:hover {
+      transform: translateY(-2px);
+      border-color: rgba(255,255,255,.28);
+    }
+
+    .menu { display: none; }
+
+    main { padding-top: 74px; }
+    section { padding: 96px 0; position: relative; }
+
+    .hero {
+      min-height: calc(100vh - 74px);
+      display: grid;
+      align-items: end;
+      padding: 70px 0 46px;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(5,9,15,.88) 0%, rgba(5,9,15,.55) 46%, rgba(5,9,15,.23) 100%),
+        url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1800&q=85") center/cover;
+      transform: scale(1.04);
+      animation: heroZoom 16s ease-in-out infinite alternate;
+      z-index: -2;
+    }
+
+    body.light .hero::before {
+      background:
+        linear-gradient(90deg, rgba(247,251,255,.86) 0%, rgba(247,251,255,.5) 47%, rgba(247,251,255,.16) 100%),
+        url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1800&q=85") center/cover;
+    }
+
+    .mesh {
+      position: absolute;
+      inset: auto 0 0;
+      height: 38%;
+      background: linear-gradient(transparent, rgba(7,11,18,.92));
+      z-index: -1;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(310px, .58fr);
+      gap: 28px;
+      align-items: end;
+    }
+
+    .eyebrow {
+      color: var(--lime);
+      text-transform: uppercase;
+      font-size: 12px;
+      font-weight: 850;
+      letter-spacing: .08em;
+      margin-bottom: 16px;
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      max-width: 830px;
+      font-size: clamp(44px, 7vw, 86px);
+      line-height: .94;
+      margin-bottom: 22px;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      color: var(--muted);
+      font-size: clamp(17px, 2vw, 21px);
+      line-height: 1.65;
+      max-width: 690px;
+      margin-bottom: 28px;
+    }
+
+    .hero-cta { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 34px; }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      max-width: 680px;
+    }
+
+    .metric, .service, .case, .member, .blog-card, .contact-panel, .tech-panel, .process-step, .mini-card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+    }
+
+    .metric { padding: 16px; }
+    .metric strong {
+      display: block;
+      font-size: 30px;
+      color: var(--cyan);
+      margin-bottom: 4px;
+    }
+    .metric span { color: var(--muted); font-size: 13px; }
+
+    .command {
+      padding: 18px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .command-screen {
+      min-height: 320px;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(135deg, rgba(66,217,255,.18), rgba(255,209,102,.07)),
+        url("https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=900&q=80") center/cover;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pulse-line {
+      position: absolute;
+      left: 8%;
+      right: 8%;
+      height: 2px;
+      top: 50%;
+      background: linear-gradient(90deg, transparent, var(--lime), var(--cyan), transparent);
+      animation: scan 3s ease-in-out infinite;
+    }
+
+    .status {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .status b { color: var(--ink); }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+
+    h2 {
+      font-size: clamp(32px, 5vw, 54px);
+      line-height: 1;
+      margin-bottom: 12px;
+      letter-spacing: 0;
+    }
+
+    .section-head p, .muted { color: var(--muted); line-height: 1.7; }
+    .section-head p { max-width: 530px; margin-bottom: 0; }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .service {
+      padding: 22px;
+      min-height: 250px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .service::after {
+      content: "";
+      position: absolute;
+      inset: auto -20% -45% 20%;
+      height: 150px;
+      background: radial-gradient(circle, rgba(66,217,255,.18), transparent 70%);
+      transition: transform .35s ease;
+    }
+    .service:hover::after { transform: translateY(-20px); }
+
+    .service-icon {
+      width: 46px;
+      height: 46px;
+      border: 1px solid var(--line);
+      display: grid;
+      place-items: center;
+      border-radius: var(--radius);
+      color: #071017;
+      background: var(--gold);
+      font-weight: 900;
+    }
+
+    .service:nth-child(2) .service-icon { background: var(--cyan); }
+    .service:nth-child(3) .service-icon { background: var(--lime); }
+    .service:nth-child(4) .service-icon { background: var(--coral); }
+
+    .service h3, .case h3, .member h3, .blog-card h3 { margin: 18px 0 10px; font-size: 22px; }
+    .service p, .case p, .member p, .blog-card p { color: var(--muted); line-height: 1.65; margin-bottom: 0; }
+
+    .filters, .tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 22px;
+    }
+
+    .chip, .tab {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.07);
+      color: var(--muted);
+      min-height: 38px;
+      padding: 0 14px;
+      border-radius: var(--radius);
+    }
+
+    .chip.active, .tab.active {
+      color: #071017;
+      background: linear-gradient(135deg, var(--cyan), var(--lime));
+      border-color: transparent;
+      font-weight: 800;
+    }
+
+    .case-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .case {
+      overflow: hidden;
+      transition: transform .28s ease, opacity .28s ease;
+    }
+    .case.hide { display: none; }
+    .case:hover { transform: translateY(-6px); }
+    .case img { width: 100%; height: 230px; object-fit: cover; }
+    .case-body { padding: 20px; }
+    .tagline { display: flex; gap: 8px; flex-wrap: wrap; }
+    .tag {
+      color: var(--ink);
+      background: rgba(255,255,255,.09);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 6px 8px;
+      font-size: 12px;
+    }
+
+    .case-actions { display: flex; gap: 10px; margin-top: 18px; }
+    .case-actions button { min-width: 0; flex: 1; }
+
+    .tech-layout {
+      display: grid;
+      grid-template-columns: .75fr 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .tech-panel { padding: 24px; min-height: 330px; }
+    .stack-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .stack-item {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 14px;
+      background: rgba(255,255,255,.06);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 22px var(--lime); }
+
+    .process {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .process-step { padding: 22px; }
+    .process-step b { color: var(--coral); font-size: 13px; }
+    .process-step h3 { font-size: 20px; margin: 16px 0 8px; }
+    .process-step p { margin-bottom: 0; color: var(--muted); line-height: 1.6; }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .member { overflow: hidden; }
+    .member img { width: 100%; height: 270px; object-fit: cover; filter: saturate(1.04); }
+    .member-body { padding: 18px; }
+    .role { color: var(--cyan); font-weight: 800; font-size: 13px; }
+
+    .blog-tools {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+    .search {
+      min-height: 46px;
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 0 14px;
+      color: var(--ink);
+      background: rgba(255,255,255,.08);
+      outline: none;
+    }
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .blog-card { overflow: hidden; }
+    .blog-card img { width: 100%; height: 190px; object-fit: cover; }
+    .blog-body { padding: 18px; }
+    .date { color: var(--gold); font-size: 13px; font-weight: 800; }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 20px;
+      align-items: stretch;
+    }
+    .contact-panel { padding: 24px; }
+    .mini-grid { display: grid; gap: 12px; margin-top: 22px; }
+    .mini-card { box-shadow: none; padding: 16px; }
+    .mini-card strong { display: block; margin-bottom: 5px; }
+
+    form {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    label { display: grid; gap: 8px; color: var(--muted); font-size: 13px; font-weight: 700; }
+    input, textarea, select {
+      width: 100%;
+      min-height: 48px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.08);
+      color: var(--ink);
+      padding: 0 14px;
+      outline: none;
+    }
+    textarea { padding-top: 12px; min-height: 126px; resize: vertical; }
+    select option { color: #101723; }
+    .full { grid-column: 1 / -1; }
+    .form-row {
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .notice { color: var(--lime); min-height: 22px; font-weight: 750; }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 28px 0;
+      color: var(--muted);
+    }
+    .foot {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 80;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(3,6,10,.72);
+      backdrop-filter: blur(12px);
+    }
+    .modal.open { display: flex; }
+    .dialog {
+      width: min(760px, 100%);
+      background: var(--panel-strong);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      animation: rise .28s ease both;
+    }
+    .dialog img { width: 100%; height: 260px; object-fit: cover; }
+    .dialog-body { padding: 22px; }
+    .dialog-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      gap: 14px;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    .toast {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 100;
+      background: var(--panel-strong);
+      color: var(--ink);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+      box-shadow: var(--shadow);
+      transform: translateY(24px);
+      opacity: 0;
+      pointer-events: none;
+      transition: .25s ease;
+    }
+    .toast.show { opacity: 1; transform: translateY(0); }
+
+    @keyframes heroZoom {
+      from { transform: scale(1.02) translateX(0); }
+      to { transform: scale(1.09) translateX(-1.4%); }
+    }
+    @keyframes scan {
+      0%, 100% { transform: translateY(-100px); opacity: .35; }
+      50% { transform: translateY(100px); opacity: 1; }
+    }
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(18px) scale(.98); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    @media (max-width: 980px) {
+      .navlinks {
+        position: fixed;
+        left: 20px;
+        right: 20px;
+        top: 84px;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 12px;
+        background: var(--panel-strong);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+      }
+      .navlinks.open { display: flex; }
+      .menu { display: grid; }
+      .hero-grid, .tech-layout, .contact-grid { grid-template-columns: 1fr; }
+      .services-grid, .process, .team-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .case-grid, .blog-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .command { max-width: 560px; }
+    }
+
+    @media (max-width: 640px) {
+      .wrap { width: min(100% - 28px, var(--max)); }
+      section { padding: 70px 0; }
+      .hero { min-height: auto; padding-top: 54px; }
+      .actions .ghost { display: none; }
+      .metrics, .services-grid, .case-grid, .process, .team-grid, .blog-grid, .stack-grid, form { grid-template-columns: 1fr; }
+      .section-head { display: block; }
+      .blog-tools { grid-template-columns: 1fr; }
+      .case-actions { flex-direction: column; }
+      .form-row { align-items: stretch; }
+      .form-row .primary { width: 100%; }
+      h1 { font-size: 44px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav wrap" aria-label="Главная навигация">
+      <a class="brand" href="#home" aria-label="NexaForge">
+        <span class="mark">NF</span>
+        <span>NexaForge</span>
+      </a>
+      <div class="navlinks" id="navlinks">
+        <a href="#services">Услуги</a>
+        <a href="#cases">Кейсы</a>
+        <a href="#tech">Технологии</a>
+        <a href="#team">Команда</a>
+        <a href="#blog">Блог</a>
+        <a href="#contact">Заявка</a>
+      </div>
+      <div class="actions">
+        <button class="ghost" id="langBtn" type="button" aria-label="Switch language">EN</button>
+        <button class="icon-btn" id="themeBtn" type="button" aria-label="Переключить тему">☼</button>
+        <button class="ghost" data-scroll="#contact" type="button">Обсудить проект</button>
+        <button class="icon-btn menu" id="menuBtn" type="button" aria-label="Открыть меню">☰</button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="mesh"></div>
+      <div class="wrap hero-grid">
+        <div class="reveal">
+          <div class="eyebrow">Digital products, cloud, automation</div>
+          <h1>NexaForge строит IT-продукты, которые выглядят дорого и работают быстро.</h1>
+          <p class="lead">Проектируем сайты, SaaS-платформы, мобильные приложения и внутренние системы для компаний, которым нужна не витрина, а понятный рост.</p>
+          <div class="hero-cta">
+            <button class="primary" data-scroll="#cases" type="button">Смотреть кейсы</button>
+            <button class="secondary" data-open-brief type="button">Рассчитать проект</button>
+          </div>
+          <div class="metrics" aria-label="Показатели компании">
+            <div class="metric"><strong data-count="128">0</strong><span>запущенных продуктов</span></div>
+            <div class="metric"><strong data-count="42">0</strong><span>эксперта в команде</span></div>
+            <div class="metric"><strong data-count="97">0</strong><span>% клиентов возвращаются</span></div>
+          </div>
+        </div>
+        <aside class="command reveal" aria-label="Статус продукта">
+          <div class="command-screen">
+            <div class="pulse-line"></div>
+          </div>
+          <div class="status"><span>Discovery sprint</span><b>5 дней</b></div>
+          <div class="status"><span>Prototype quality</span><b>92%</b></div>
+          <div class="status"><span>Release readiness</span><b>Live</b></div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <div class="eyebrow">Что делаем</div>
+            <h2>Услуги для сильного цифрового продукта</h2>
+          </div>
+          <p>Каждый блок можно открыть, а кнопки ведут к заявке с уже выбранным направлением.</p>
+        </div>
+        <div class="services-grid">
+          <article class="service reveal">
+            <div>
+              <span class="service-icon">UI</span>
+              <h3>Сайты и веб-приложения</h3>
+              <p>Лендинги, корпоративные порталы, личные кабинеты, маркетплейсы и админ-панели.</p>
+            </div>
+            <button class="secondary" data-service="Сайт или веб-приложение" type="button">Выбрать</button>
+          </article>
+          <article class="service reveal">
+            <div>
+              <span class="service-icon">AI</span>
+              <h3>AI и автоматизация</h3>
+              <p>Чат-боты, аналитика, RAG-поиск, автоматизация отдела продаж и поддержки.</p>
+            </div>
+            <button class="secondary" data-service="AI и автоматизация" type="button">Выбрать</button>
+          </article>
+          <article class="service reveal">
+            <div>
+              <span class="service-icon">S</span>
+              <h3>SaaS-платформы</h3>
+              <p>MVP, подписки, роли, биллинг, API, отчеты и масштабируемая архитектура.</p>
+            </div>
+            <button class="secondary" data-service="SaaS-платформа" type="button">Выбрать</button>
+          </article>
+          <article class="service reveal">
+            <div>
+              <span class="service-icon">∞</span>
+              <h3>DevOps и облака</h3>
+              <p>CI/CD, мониторинг, безопасность, контейнеры, инфраструктура и поддержка 24/7.</p>
+            </div>
+            <button class="secondary" data-service="DevOps и облака" type="button">Выбрать</button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="cases">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <div class="eyebrow">Портфолио</div>
+            <h2>Кейсы с фильтрами и деталями</h2>
+          </div>
+          <p>Нажмите на карточку или кнопку деталей, чтобы открыть описание проекта.</p>
+        </div>
+        <div class="filters reveal" aria-label="Фильтры кейсов">
+          <button class="chip active" data-filter="all" type="button">Все</button>
+          <button class="chip" data-filter="web" type="button">Web</button>
+          <button class="chip" data-filter="mobile" type="button">Mobile</button>
+          <button class="chip" data-filter="ai" type="button">AI</button>
+          <button class="chip" data-filter="cloud" type="button">Cloud</button>
+        </div>
+        <div class="case-grid">
+          <article class="case reveal" data-kind="web cloud" data-title="FinSight Dashboard" data-image="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80" data-text="Единая аналитическая панель для финтех-команды: потоковые отчеты, роли, экспорт и SLA-мониторинг. После запуска скорость подготовки отчетов выросла в 3,4 раза.">
+            <img alt="Аналитический dashboard на мониторе" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80">
+            <div class="case-body">
+              <div class="tagline"><span class="tag">React</span><span class="tag">Cloud</span><span class="tag">BI</span></div>
+              <h3>FinSight Dashboard</h3>
+              <p>Финансовая аналитика в реальном времени.</p>
+              <div class="case-actions"><button class="secondary details" type="button">Детали</button><button class="primary" data-scroll="#contact" type="button">Хочу так</button></div>
+            </div>
+          </article>
+          <article class="case reveal" data-kind="mobile web" data-title="MedFlow Patient App" data-image="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=900&q=80" data-text="Мобильное приложение для записи, телемедицины и медицинских карт. Мы собрали UX, дизайн-систему, API и релизный пайплайн для iOS и Android.">
+            <img alt="Врач работает с цифровой медицинской системой" src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=900&q=80">
+            <div class="case-body">
+              <div class="tagline"><span class="tag">Flutter</span><span class="tag">FHIR</span><span class="tag">UX</span></div>
+              <h3>MedFlow Patient App</h3>
+              <p>Запись к врачу и телемедицина.</p>
+              <div class="case-actions"><button class="secondary details" type="button">Детали</button><button class="primary" data-scroll="#contact" type="button">Хочу так</button></div>
+            </div>
+          </article>
+          <article class="case reveal" data-kind="ai cloud" data-title="Retail AI Copilot" data-image="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=900&q=80" data-text="AI-помощник для розничной сети: прогноз спроса, подсказки менеджерам и умный поиск по базе знаний. Интеграции подключены без остановки текущей CRM.">
+            <img alt="Команда анализирует данные продаж" src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=900&q=80">
+            <div class="case-body">
+              <div class="tagline"><span class="tag">LLM</span><span class="tag">RAG</span><span class="tag">CRM</span></div>
+              <h3>Retail AI Copilot</h3>
+              <p>Умные подсказки для продаж.</p>
+              <div class="case-actions"><button class="secondary details" type="button">Детали</button><button class="primary" data-scroll="#contact" type="button">Хочу так</button></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="tech">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <div class="eyebrow">Технологии</div>
+            <h2>Стек под задачу, а не ради моды</h2>
+          </div>
+          <p>Табы переключают набор технологий и описание подхода.</p>
+        </div>
+        <div class="tech-layout">
+          <div class="tech-panel reveal">
+            <div class="tabs" aria-label="Табы технологий">
+              <button class="tab active" data-tab="frontend" type="button">Frontend</button>
+              <button class="tab" data-tab="backend" type="button">Backend</button>
+              <button class="tab" data-tab="cloud" type="button">Cloud</button>
+            </div>
+            <h3 id="techTitle">Интерфейсы без лишнего шума</h3>
+            <p class="muted" id="techText">React, Vue, TypeScript, WebGL и дизайн-системы для быстрых, понятных интерфейсов.</p>
+            <div class="stack-grid" id="stackGrid"></div>
+          </div>
+          <div class="tech-panel reveal">
+            <img alt="Разработчики обсуждают архитектуру приложения" src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1000&q=80" style="height:330px;width:100%;object-fit:cover;border-radius:8px;">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="process">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <div class="eyebrow">Процесс</div>
+            <h2>От идеи до поддержки</h2>
+          </div>
+        </div>
+        <div class="process">
+          <div class="process-step reveal"><b>01</b><h3>Discovery</h3><p>Исследуем бизнес, пользователей, метрики и риски.</p></div>
+          <div class="process-step reveal"><b>02</b><h3>Prototype</h3><p>Собираем кликабельный прототип и проверяем сценарии.</p></div>
+          <div class="process-step reveal"><b>03</b><h3>Build</h3><p>Разрабатываем продукт короткими релизными итерациями.</p></div>
+          <div class="process-step reveal"><b>04</b><h3>Scale</h3><p>Запускаем, измеряем, улучшаем и поддерживаем.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="team">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <div class="eyebrow">Команда</div>
+            <h2>Люди, которые держат качество</h2>
+          </div>
+        </div>
+        <div class="team-grid">
+          <article class="member reveal">
+            <img alt="Product strategist" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=700&q=80">
+            <div class="member-body"><span class="role">Product Strategy</span><h3>Алина Воронцова</h3><p>Помогает превратить идею в понятную дорожную карту.</p></div>
+          </article>
+          <article class="member reveal">
+            <img alt="Technical lead" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=700&q=80">
+            <div class="member-body"><span class="role">Tech Lead</span><h3>Марк Давлетов</h3><p>Отвечает за архитектуру, надежность и скорость разработки.</p></div>
+          </article>
+          <article class="member reveal">
+            <img alt="UX designer" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=700&q=80">
+            <div class="member-body"><span class="role">UX/UI Design</span><h3>София Рей</h3><p>Создает интерфейсы, которые приятно использовать каждый день.</p></div>
+          </article>
+          <article class="member reveal">
+            <img alt="DevOps engineer" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=700&q=80">
+            <div class="member-body"><span class="role">DevOps</span><h3>Даниил Ким</h3><p>Настраивает облака, CI/CD, мониторинг и безопасность.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="blog">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <div class="eyebrow">Блог</div>
+            <h2>Идеи о продукте и технологиях</h2>
+          </div>
+        </div>
+        <div class="blog-tools reveal">
+          <input class="search" id="blogSearch" type="search" placeholder="Поиск по блогу: AI, дизайн, облака..." aria-label="Поиск по блогу">
+          <button class="secondary" id="resetBlog" type="button">Сбросить</button>
+        </div>
+        <div class="blog-grid" id="blogGrid">
+          <article class="blog-card reveal" data-blog="ai автоматизация продажи crm">
+            <img alt="AI analytics screen" src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80">
+            <div class="blog-body"><span class="date">18 июня</span><h3>Как внедрять AI без хаоса</h3><p>План пилота, метрики качества и защита данных.</p></div>
+          </article>
+          <article class="blog-card reveal" data-blog="дизайн ux интерфейс dashboard">
+            <img alt="UX wireframes" src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=800&q=80">
+            <div class="blog-body"><span class="date">10 июня</span><h3>UX для сложных систем</h3><p>Как сделать dashboard ясным для ежедневной работы.</p></div>
+          </article>
+          <article class="blog-card reveal" data-blog="cloud devops безопасность релиз">
+            <img alt="Cloud infrastructure" src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80">
+            <div class="blog-body"><span class="date">2 июня</span><h3>Облако без лишних расходов</h3><p>Где обычно теряется бюджет и как это исправить.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap contact-grid">
+        <div class="contact-panel reveal">
+          <div class="eyebrow">Заявка</div>
+          <h2>Расскажите о проекте</h2>
+          <p class="muted">Форма проверяет поля, показывает статус и подставляет услугу из выбранной карточки.</p>
+          <div class="mini-grid">
+            <div class="mini-card"><strong>Ответ</strong><span class="muted">в течение 2 часов</span></div>
+            <div class="mini-card"><strong>Старт</strong><span class="muted">с discovery-сессии</span></div>
+            <div class="mini-card"><strong>NDA</strong><span class="muted">подписываем до обсуждения</span></div>
+          </div>
+        </div>
+        <div class="contact-panel reveal">
+          <form id="projectForm">
+            <label>Имя
+              <input name="name" autocomplete="name" required placeholder="Ваше имя">
+            </label>
+            <label>Email
+              <input name="email" type="email" autocomplete="email" required placeholder="you@company.com">
+            </label>
+            <label>Услуга
+              <select name="service" id="serviceSelect">
+                <option>Сайт или веб-приложение</option>
+                <option>AI и автоматизация</option>
+                <option>SaaS-платформа</option>
+                <option>DevOps и облака</option>
+              </select>
+            </label>
+            <label>Бюджет
+              <select name="budget">
+                <option>до $5 000</option>
+                <option>$5 000 - $15 000</option>
+                <option>$15 000 - $50 000</option>
+                <option>$50 000+</option>
+              </select>
+            </label>
+            <label class="full">Описание
+              <textarea name="message" required placeholder="Коротко опишите задачу, сроки и желаемый результат"></textarea>
+            </label>
+            <div class="form-row">
+              <span class="notice" id="formNotice" aria-live="polite"></span>
+              <button class="primary" type="submit">Отправить заявку</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap foot">
+      <span>© 2026 NexaForge. Product engineering studio.</span>
+      <span>hello@nexaforge.dev · +7 777 240 88 18</span>
+    </div>
+  </footer>
+
+  <div class="modal" id="caseModal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="dialog">
+      <img id="modalImage" alt="">
+      <div class="dialog-body">
+        <div class="dialog-head">
+          <div>
+            <div class="eyebrow">Case details</div>
+            <h2 id="modalTitle">Название кейса</h2>
+          </div>
+          <button class="icon-btn" id="closeModal" type="button" aria-label="Закрыть">×</button>
+        </div>
+        <p class="muted" id="modalText"></p>
+        <button class="primary" data-scroll="#contact" type="button">Обсудить похожий проект</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    const $ = (selector, root = document) => root.querySelector(selector);
+    const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
+    let currentLang = localStorage.getItem("nexaforgeLang") || "ru";
+
+    const translations = {
+      ru: {
+        langButton: "EN",
+        themeSwitched: "Тема переключена",
+        filterPrefix: "Фильтр кейсов: ",
+        searchCleared: "Поиск очищен",
+        serviceChosen: "Услуга выбрана: ",
+        formSent: "Заявка успешно отправлена",
+        formNotice: (name, service) => `Спасибо, ${name}! Заявка по направлению "${service}" отправлена.`,
+        nav: ["Услуги", "Кейсы", "Технологии", "Команда", "Блог", "Заявка"],
+        services: ["Сайт или веб-приложение", "AI и автоматизация", "SaaS-платформа", "DevOps и облака"],
+        budgets: ["до $5 000", "$5 000 - $15 000", "$15 000 - $50 000", "$50 000+"],
+        tech: {
+          frontend: {
+            title: "Интерфейсы без лишнего шума",
+            text: "React, Vue, TypeScript, WebGL и дизайн-системы для быстрых, понятных интерфейсов.",
+            stack: ["React", "TypeScript", "Next.js", "Vue", "Three.js", "Storybook"]
+          },
+          backend: {
+            title: "API и бизнес-логика, которые выдерживают рост",
+            text: "Node.js, Python, Go, PostgreSQL, очереди и интеграции с внешними сервисами.",
+            stack: ["Node.js", "Python", "Go", "PostgreSQL", "Redis", "GraphQL"]
+          },
+          cloud: {
+            title: "Облака, релизы и наблюдаемость",
+            text: "Контейнеры, CI/CD, мониторинг, инфраструктура как код и надежные пайплайны.",
+            stack: ["Docker", "Kubernetes", "AWS", "GCP", "Terraform", "Prometheus"]
+          }
+        },
+        cases: [
+          {
+            title: "FinSight Dashboard",
+            text: "Единая аналитическая панель для финтех-команды: потоковые отчеты, роли, экспорт и SLA-мониторинг. После запуска скорость подготовки отчетов выросла в 3,4 раза.",
+            description: "Финансовая аналитика в реальном времени."
+          },
+          {
+            title: "MedFlow Patient App",
+            text: "Мобильное приложение для записи, телемедицины и медицинских карт. Мы собрали UX, дизайн-систему, API и релизный пайплайн для iOS и Android.",
+            description: "Запись к врачу и телемедицина."
+          },
+          {
+            title: "Retail AI Copilot",
+            text: "AI-помощник для розничной сети: прогноз спроса, подсказки менеджерам и умный поиск по базе знаний. Интеграции подключены без остановки текущей CRM.",
+            description: "Умные подсказки для продаж."
+          }
+        ],
+        text: {
+          ".nav .ghost[data-scroll='#contact']": "Обсудить проект",
+          ".hero .eyebrow": "Digital products, cloud, automation",
+          "h1": "NexaForge строит IT-продукты, которые выглядят дорого и работают быстро.",
+          ".lead": "Проектируем сайты, SaaS-платформы, мобильные приложения и внутренние системы для компаний, которым нужна не витрина, а понятный рост.",
+          ".hero-cta .primary": "Смотреть кейсы",
+          ".hero-cta .secondary": "Рассчитать проект",
+          ".metrics .metric:nth-child(1) span": "запущенных продуктов",
+          ".metrics .metric:nth-child(2) span": "эксперта в команде",
+          ".metrics .metric:nth-child(3) span": "% клиентов возвращаются",
+          ".status:nth-of-type(2) span": "Discovery sprint",
+          ".status:nth-of-type(3) span": "Prototype quality",
+          ".status:nth-of-type(4) span": "Release readiness",
+          "#services .eyebrow": "Что делаем",
+          "#services h2": "Услуги для сильного цифрового продукта",
+          "#services .section-head p": "Каждый блок можно открыть, а кнопки ведут к заявке с уже выбранным направлением.",
+          ".service:nth-child(1) h3": "Сайты и веб-приложения",
+          ".service:nth-child(1) p": "Лендинги, корпоративные порталы, личные кабинеты, маркетплейсы и админ-панели.",
+          ".service:nth-child(2) h3": "AI и автоматизация",
+          ".service:nth-child(2) p": "Чат-боты, аналитика, RAG-поиск, автоматизация отдела продаж и поддержки.",
+          ".service:nth-child(3) h3": "SaaS-платформы",
+          ".service:nth-child(3) p": "MVP, подписки, роли, биллинг, API, отчеты и масштабируемая архитектура.",
+          ".service:nth-child(4) h3": "DevOps и облака",
+          ".service:nth-child(4) p": "CI/CD, мониторинг, безопасность, контейнеры, инфраструктура и поддержка 24/7.",
+          "#cases .eyebrow": "Портфолио",
+          "#cases h2": "Кейсы с фильтрами и деталями",
+          "#cases .section-head p": "Нажмите на карточку или кнопку деталей, чтобы открыть описание проекта.",
+          "#tech .eyebrow": "Технологии",
+          "#tech h2": "Стек под задачу, а не ради моды",
+          "#tech .section-head p": "Табы переключают набор технологий и описание подхода.",
+          "#process .eyebrow": "Процесс",
+          "#process h2": "От идеи до поддержки",
+          ".process-step:nth-child(1) p": "Исследуем бизнес, пользователей, метрики и риски.",
+          ".process-step:nth-child(2) p": "Собираем кликабельный прототип и проверяем сценарии.",
+          ".process-step:nth-child(3) p": "Разрабатываем продукт короткими релизными итерациями.",
+          ".process-step:nth-child(4) p": "Запускаем, измеряем, улучшаем и поддерживаем.",
+          "#team .eyebrow": "Команда",
+          "#team h2": "Люди, которые держат качество",
+          ".member:nth-child(1) h3": "Алина Воронцова",
+          ".member:nth-child(1) p": "Помогает превратить идею в понятную дорожную карту.",
+          ".member:nth-child(2) h3": "Марк Давлетов",
+          ".member:nth-child(2) p": "Отвечает за архитектуру, надежность и скорость разработки.",
+          ".member:nth-child(3) h3": "София Рей",
+          ".member:nth-child(3) p": "Создает интерфейсы, которые приятно использовать каждый день.",
+          ".member:nth-child(4) h3": "Даниил Ким",
+          ".member:nth-child(4) p": "Настраивает облака, CI/CD, мониторинг и безопасность.",
+          "#blog .eyebrow": "Блог",
+          "#blog h2": "Идеи о продукте и технологиях",
+          "#resetBlog": "Сбросить",
+          ".blog-card:nth-child(1) .date": "18 июня",
+          ".blog-card:nth-child(1) h3": "Как внедрять AI без хаоса",
+          ".blog-card:nth-child(1) p": "План пилота, метрики качества и защита данных.",
+          ".blog-card:nth-child(2) .date": "10 июня",
+          ".blog-card:nth-child(2) h3": "UX для сложных систем",
+          ".blog-card:nth-child(2) p": "Как сделать dashboard ясным для ежедневной работы.",
+          ".blog-card:nth-child(3) .date": "2 июня",
+          ".blog-card:nth-child(3) h3": "Облако без лишних расходов",
+          ".blog-card:nth-child(3) p": "Где обычно теряется бюджет и как это исправить.",
+          "#contact .eyebrow": "Заявка",
+          "#contact h2": "Расскажите о проекте",
+          "#contact .contact-panel:first-child .muted": "Форма проверяет поля, показывает статус и подставляет услугу из выбранной карточки.",
+          ".mini-card:nth-child(1) strong": "Ответ",
+          ".mini-card:nth-child(1) .muted": "в течение 2 часов",
+          ".mini-card:nth-child(2) strong": "Старт",
+          ".mini-card:nth-child(2) .muted": "с discovery-сессии",
+          ".mini-card:nth-child(3) strong": "NDA",
+          ".mini-card:nth-child(3) .muted": "подписываем до обсуждения",
+          "label:nth-child(1)": "Имя",
+          "label:nth-child(2)": "Email",
+          "label:nth-child(3)": "Услуга",
+          "label:nth-child(4)": "Бюджет",
+          "label.full": "Описание",
+          "#projectForm button[type='submit']": "Отправить заявку",
+          ".dialog .eyebrow": "Case details",
+          ".dialog .primary": "Обсудить похожий проект",
+          "footer .foot span:first-child": "© 2026 NexaForge. Product engineering studio.",
+          "footer .foot span:last-child": "hello@nexaforge.dev · +7 777 240 88 18"
+        },
+        attrs: {
+          "#blogSearch": { placeholder: "Поиск по блогу: AI, дизайн, облака...", "aria-label": "Поиск по блогу" },
+          "input[name='name']": { placeholder: "Ваше имя" },
+          "textarea[name='message']": { placeholder: "Коротко опишите задачу, сроки и желаемый результат" },
+          "#themeBtn": { "aria-label": "Переключить тему" },
+          "#menuBtn": { "aria-label": "Открыть меню" }
+        }
+      },
+      en: {
+        langButton: "RU",
+        themeSwitched: "Theme switched",
+        filterPrefix: "Case filter: ",
+        searchCleared: "Search cleared",
+        serviceChosen: "Service selected: ",
+        formSent: "Request sent successfully",
+        formNotice: (name, service) => `Thanks, ${name}! Your request for "${service}" has been sent.`,
+        nav: ["Services", "Cases", "Technology", "Team", "Blog", "Contact"],
+        services: ["Website or web app", "AI and automation", "SaaS platform", "DevOps and cloud"],
+        budgets: ["under $5,000", "$5,000 - $15,000", "$15,000 - $50,000", "$50,000+"],
+        tech: {
+          frontend: {
+            title: "Interfaces without unnecessary noise",
+            text: "React, Vue, TypeScript, WebGL, and design systems for fast, clear user interfaces.",
+            stack: ["React", "TypeScript", "Next.js", "Vue", "Three.js", "Storybook"]
+          },
+          backend: {
+            title: "APIs and business logic built for growth",
+            text: "Node.js, Python, Go, PostgreSQL, queues, and integrations with external services.",
+            stack: ["Node.js", "Python", "Go", "PostgreSQL", "Redis", "GraphQL"]
+          },
+          cloud: {
+            title: "Cloud, releases, and observability",
+            text: "Containers, CI/CD, monitoring, infrastructure as code, and reliable delivery pipelines.",
+            stack: ["Docker", "Kubernetes", "AWS", "GCP", "Terraform", "Prometheus"]
+          }
+        },
+        cases: [
+          {
+            title: "FinSight Dashboard",
+            text: "A unified analytics dashboard for a fintech team: streaming reports, roles, exports, and SLA monitoring. After launch, report preparation became 3.4x faster.",
+            description: "Real-time financial analytics."
+          },
+          {
+            title: "MedFlow Patient App",
+            text: "A mobile app for appointments, telemedicine, and medical records. We delivered the UX, design system, API, and release pipeline for iOS and Android.",
+            description: "Doctor appointments and telemedicine."
+          },
+          {
+            title: "Retail AI Copilot",
+            text: "An AI assistant for a retail network: demand forecasting, manager prompts, and smart knowledge-base search. Integrations were connected without stopping the existing CRM.",
+            description: "Smart prompts for sales teams."
+          }
+        ],
+        text: {
+          ".nav .ghost[data-scroll='#contact']": "Discuss a project",
+          ".hero .eyebrow": "Digital products, cloud, automation",
+          "h1": "NexaForge builds IT products that look premium and work fast.",
+          ".lead": "We design websites, SaaS platforms, mobile apps, and internal systems for companies that need measurable growth, not just a pretty facade.",
+          ".hero-cta .primary": "View cases",
+          ".hero-cta .secondary": "Estimate project",
+          ".metrics .metric:nth-child(1) span": "products launched",
+          ".metrics .metric:nth-child(2) span": "experts on the team",
+          ".metrics .metric:nth-child(3) span": "% of clients return",
+          ".status:nth-of-type(2) span": "Discovery sprint",
+          ".status:nth-of-type(3) span": "Prototype quality",
+          ".status:nth-of-type(4) span": "Release readiness",
+          "#services .eyebrow": "What we do",
+          "#services h2": "Services for a strong digital product",
+          "#services .section-head p": "Each block is interactive, and the buttons open the request form with the selected service already filled in.",
+          ".service:nth-child(1) h3": "Websites and web apps",
+          ".service:nth-child(1) p": "Landing pages, corporate portals, dashboards, marketplaces, and admin panels.",
+          ".service:nth-child(2) h3": "AI and automation",
+          ".service:nth-child(2) p": "Chatbots, analytics, RAG search, and automation for sales and support teams.",
+          ".service:nth-child(3) h3": "SaaS platforms",
+          ".service:nth-child(3) p": "MVPs, subscriptions, roles, billing, APIs, reports, and scalable architecture.",
+          ".service:nth-child(4) h3": "DevOps and cloud",
+          ".service:nth-child(4) p": "CI/CD, monitoring, security, containers, infrastructure, and 24/7 support.",
+          "#cases .eyebrow": "Portfolio",
+          "#cases h2": "Cases with filters and details",
+          "#cases .section-head p": "Click a card or the details button to open the project description.",
+          "#tech .eyebrow": "Technology",
+          "#tech h2": "A stack chosen for the task",
+          "#tech .section-head p": "Tabs switch the technology set and explain our approach.",
+          "#process .eyebrow": "Process",
+          "#process h2": "From idea to support",
+          ".process-step:nth-child(1) p": "We study the business, users, metrics, and risks.",
+          ".process-step:nth-child(2) p": "We build a clickable prototype and validate user scenarios.",
+          ".process-step:nth-child(3) p": "We develop the product in short release iterations.",
+          ".process-step:nth-child(4) p": "We launch, measure, improve, and support the product.",
+          "#team .eyebrow": "Team",
+          "#team h2": "People who keep quality high",
+          ".member:nth-child(1) h3": "Alina Vorontsova",
+          ".member:nth-child(1) p": "Turns ideas into a clear product roadmap.",
+          ".member:nth-child(2) h3": "Mark Davletov",
+          ".member:nth-child(2) p": "Owns architecture, reliability, and development speed.",
+          ".member:nth-child(3) h3": "Sofia Ray",
+          ".member:nth-child(3) p": "Creates interfaces people enjoy using every day.",
+          ".member:nth-child(4) h3": "Daniel Kim",
+          ".member:nth-child(4) p": "Sets up cloud, CI/CD, monitoring, and security.",
+          "#blog .eyebrow": "Blog",
+          "#blog h2": "Ideas about product and technology",
+          "#resetBlog": "Reset",
+          ".blog-card:nth-child(1) .date": "June 18",
+          ".blog-card:nth-child(1) h3": "How to adopt AI without chaos",
+          ".blog-card:nth-child(1) p": "Pilot planning, quality metrics, and data protection.",
+          ".blog-card:nth-child(2) .date": "June 10",
+          ".blog-card:nth-child(2) h3": "UX for complex systems",
+          ".blog-card:nth-child(2) p": "How to make a dashboard clear for daily work.",
+          ".blog-card:nth-child(3) .date": "June 2",
+          ".blog-card:nth-child(3) h3": "Cloud without wasted spend",
+          ".blog-card:nth-child(3) p": "Where budget usually gets lost and how to fix it.",
+          "#contact .eyebrow": "Request",
+          "#contact h2": "Tell us about your project",
+          "#contact .contact-panel:first-child .muted": "The form validates fields, shows status, and inserts the service selected from the cards.",
+          ".mini-card:nth-child(1) strong": "Response",
+          ".mini-card:nth-child(1) .muted": "within 2 hours",
+          ".mini-card:nth-child(2) strong": "Start",
+          ".mini-card:nth-child(2) .muted": "with a discovery session",
+          ".mini-card:nth-child(3) strong": "NDA",
+          ".mini-card:nth-child(3) .muted": "signed before discussion",
+          "label:nth-child(1)": "Name",
+          "label:nth-child(2)": "Email",
+          "label:nth-child(3)": "Service",
+          "label:nth-child(4)": "Budget",
+          "label.full": "Description",
+          "#projectForm button[type='submit']": "Send request",
+          ".dialog .eyebrow": "Case details",
+          ".dialog .primary": "Discuss a similar project",
+          "footer .foot span:first-child": "© 2026 NexaForge. Product engineering studio.",
+          "footer .foot span:last-child": "hello@nexaforge.dev · +7 777 240 88 18"
+        },
+        attrs: {
+          "#blogSearch": { placeholder: "Search the blog: AI, design, cloud...", "aria-label": "Blog search" },
+          "input[name='name']": { placeholder: "Your name" },
+          "textarea[name='message']": { placeholder: "Briefly describe the task, timeline, and desired result" },
+          "#themeBtn": { "aria-label": "Switch theme" },
+          "#menuBtn": { "aria-label": "Open menu" }
+        }
+      }
+    };
+
+    const toast = $("#toast");
+    const showToast = (text) => {
+      toast.textContent = text;
+      toast.classList.add("show");
+      clearTimeout(showToast.timer);
+      showToast.timer = setTimeout(() => toast.classList.remove("show"), 2600);
+    };
+
+    const setText = (selector, value) => {
+      const element = $(selector);
+      if (!element) return;
+      if (element.tagName === "LABEL" && element.childNodes[0]) {
+        element.childNodes[0].nodeValue = value + "\n              ";
+        return;
+      }
+      element.textContent = value;
+    };
+
+    const setOptions = (select, values) => {
+      const previousIndex = Math.max(select.selectedIndex, 0);
+      select.innerHTML = values.map((value) => `<option>${value}</option>`).join("");
+      select.selectedIndex = Math.min(previousIndex, values.length - 1);
+    };
+
+    const applyLanguage = (lang, silent = false) => {
+      const dictionary = translations[lang];
+      currentLang = lang;
+      localStorage.setItem("nexaforgeLang", lang);
+      document.documentElement.lang = lang;
+      document.title = lang === "en" ? "NexaForge | IT Company Portfolio" : "NexaForge | IT Company Portfolio";
+      $("#langBtn").textContent = dictionary.langButton;
+
+      $$(".navlinks a").forEach((link, index) => {
+        link.textContent = dictionary.nav[index];
+      });
+
+      Object.entries(dictionary.text).forEach(([selector, value]) => setText(selector, value));
+      Object.entries(dictionary.attrs).forEach(([selector, attrs]) => {
+        const element = $(selector);
+        if (!element) return;
+        Object.entries(attrs).forEach(([name, value]) => element.setAttribute(name, value));
+      });
+
+      $$(".chip").forEach((chip, index) => {
+        chip.textContent = (lang === "en" ? ["All", "Web", "Mobile", "AI", "Cloud"] : ["Все", "Web", "Mobile", "AI", "Cloud"])[index];
+      });
+      $$(".tab").forEach((tab, index) => {
+        tab.textContent = (lang === "en" ? ["Frontend", "Backend", "Cloud"] : ["Frontend", "Backend", "Cloud"])[index];
+      });
+      $$(".service button[data-service]").forEach((button, index) => {
+        button.dataset.service = dictionary.services[index];
+        button.textContent = lang === "en" ? "Select" : "Выбрать";
+      });
+      setOptions($("#serviceSelect"), dictionary.services);
+      setOptions($("#projectForm select[name='budget']"), dictionary.budgets);
+
+      $$(".case").forEach((card, index) => {
+        const item = dictionary.cases[index];
+        card.dataset.title = item.title;
+        card.dataset.text = item.text;
+        $("h3", card).textContent = item.title;
+        $("p", card).textContent = item.description;
+      });
+      $$(".details").forEach((button) => button.textContent = lang === "en" ? "Details" : "Детали");
+      $$(".case-actions [data-scroll]").forEach((button) => button.textContent = lang === "en" ? "I want this" : "Хочу так");
+
+      const activeTab = $(".tab.active")?.dataset.tab || "frontend";
+      renderStack(activeTab);
+      if (!silent) showToast(lang === "en" ? "English version enabled" : "Русская версия включена");
+    };
+
+    const navlinks = $("#navlinks");
+    $("#menuBtn").addEventListener("click", () => navlinks.classList.toggle("open"));
+
+    $$("[data-scroll]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const target = $(button.dataset.scroll);
+        if (modal?.classList.contains("open")) closeModal();
+        if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+        navlinks.classList.remove("open");
+      });
+    });
+
+    $("#themeBtn").addEventListener("click", (event) => {
+      document.body.classList.toggle("light");
+      event.currentTarget.textContent = document.body.classList.contains("light") ? "☾" : "☼";
+      showToast(translations[currentLang].themeSwitched);
+    });
+
+    $("#langBtn").addEventListener("click", () => {
+      applyLanguage(currentLang === "ru" ? "en" : "ru");
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) entry.target.classList.add("visible");
+      });
+    }, { threshold: 0.14 });
+    $$(".reveal").forEach((el) => observer.observe(el));
+
+    const countObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting || entry.target.dataset.done) return;
+        entry.target.dataset.done = "true";
+        const end = Number(entry.target.dataset.count);
+        const start = performance.now();
+        const tick = (now) => {
+          const progress = Math.min((now - start) / 1100, 1);
+          entry.target.textContent = Math.round(end * progress);
+          if (progress < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      });
+    });
+    $$("[data-count]").forEach((el) => countObserver.observe(el));
+
+    const sections = $$("main section[id]");
+    const navItems = $$(".navlinks a");
+    window.addEventListener("scroll", () => {
+      const current = sections.findLast((section) => section.offsetTop - 120 <= scrollY);
+      if (!current) return;
+      navItems.forEach((item) => item.classList.toggle("active", item.getAttribute("href") === "#" + current.id));
+    });
+
+    $$(".chip").forEach((chip) => {
+      chip.addEventListener("click", () => {
+        $$(".chip").forEach((item) => item.classList.remove("active"));
+        chip.classList.add("active");
+        const filter = chip.dataset.filter;
+        $$(".case").forEach((card) => {
+          card.classList.toggle("hide", filter !== "all" && !card.dataset.kind.includes(filter));
+        });
+        showToast(translations[currentLang].filterPrefix + chip.textContent);
+      });
+    });
+
+    const modal = $("#caseModal");
+    const openCase = (card) => {
+      $("#modalTitle").textContent = card.dataset.title;
+      $("#modalText").textContent = card.dataset.text;
+      $("#modalImage").src = card.dataset.image;
+      $("#modalImage").alt = card.dataset.title;
+      modal.classList.add("open");
+      modal.setAttribute("aria-hidden", "false");
+    };
+    $$(".case").forEach((card) => {
+      card.addEventListener("click", (event) => {
+        if (event.target.closest("[data-scroll]")) return;
+        openCase(card);
+      });
+    });
+    const closeModal = () => {
+      modal.classList.remove("open");
+      modal.setAttribute("aria-hidden", "true");
+    };
+    $("#closeModal").addEventListener("click", closeModal);
+    modal.addEventListener("click", (event) => {
+      if (event.target === modal) closeModal();
+    });
+    window.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") closeModal();
+    });
+
+    const tech = {
+      frontend: {
+        title: "Интерфейсы без лишнего шума",
+        text: "React, Vue, TypeScript, WebGL и дизайн-системы для быстрых, понятных интерфейсов.",
+        stack: ["React", "TypeScript", "Next.js", "Vue", "Three.js", "Storybook"]
+      },
+      backend: {
+        title: "API и бизнес-логика, которые выдерживают рост",
+        text: "Node.js, Python, Go, PostgreSQL, очереди и интеграции с внешними сервисами.",
+        stack: ["Node.js", "Python", "Go", "PostgreSQL", "Redis", "GraphQL"]
+      },
+      cloud: {
+        title: "Облака, релизы и наблюдаемость",
+        text: "Контейнеры, CI/CD, мониторинг, инфраструктура как код и надежные пайплайны.",
+        stack: ["Docker", "Kubernetes", "AWS", "GCP", "Terraform", "Prometheus"]
+      }
+    };
+    const renderStack = (key) => {
+      const activeTech = translations[currentLang].tech[key] || tech[key];
+      $("#techTitle").textContent = activeTech.title;
+      $("#techText").textContent = activeTech.text;
+      $("#stackGrid").innerHTML = activeTech.stack.map((item) => `<div class="stack-item"><span>${item}</span><span class="dot"></span></div>`).join("");
+    };
+    renderStack("frontend");
+    $$(".tab").forEach((tab) => {
+      tab.addEventListener("click", () => {
+        $$(".tab").forEach((item) => item.classList.remove("active"));
+        tab.classList.add("active");
+        renderStack(tab.dataset.tab);
+      });
+    });
+
+    $("#blogSearch").addEventListener("input", (event) => {
+      const query = event.target.value.trim().toLowerCase();
+      $$(".blog-card").forEach((card) => {
+        const haystack = (card.textContent + " " + card.dataset.blog).toLowerCase();
+        card.style.display = haystack.includes(query) ? "" : "none";
+      });
+    });
+    $("#resetBlog").addEventListener("click", () => {
+      $("#blogSearch").value = "";
+      $$(".blog-card").forEach((card) => card.style.display = "");
+      showToast(translations[currentLang].searchCleared);
+    });
+
+    $$("[data-service]").forEach((button) => {
+      button.addEventListener("click", () => {
+        $("#serviceSelect").value = button.dataset.service;
+        $("#contact").scrollIntoView({ behavior: "smooth" });
+        showToast(translations[currentLang].serviceChosen + button.dataset.service);
+      });
+    });
+    $$("[data-open-brief]").forEach((button) => {
+      button.addEventListener("click", () => {
+        $("#contact").scrollIntoView({ behavior: "smooth" });
+        $("#projectForm textarea").focus({ preventScroll: true });
+      });
+    });
+
+    $("#projectForm").addEventListener("submit", (event) => {
+      event.preventDefault();
+      const form = event.currentTarget;
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+      const data = Object.fromEntries(new FormData(form).entries());
+      $("#formNotice").textContent = translations[currentLang].formNotice(data.name, data.service);
+      showToast(translations[currentLang].formSent);
+      form.reset();
+    });
+    applyLanguage(currentLang, true);
+  </script>
+</body>
+</html>
